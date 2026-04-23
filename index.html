@@ -375,8 +375,9 @@ footer {
 .about-strip {
   background: var(--navy);
   padding: 60px;
-  display: flex;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
   align-items: center;
 }
 .about-eyebrow {
@@ -399,6 +400,7 @@ footer {
   font-size: 14.5px;
   color: rgba(255,255,255,0.62);
   line-height: 1.8;
+  max-width: 560px;
 }
 .about-stat-block { text-align: center; }
 .about-stat-num {
@@ -539,10 +541,6 @@ footer {
     <div class="about-eyebrow">Who we are</div>
     <div class="about-title">Local, by design.</div>
     <p class="about-body">StrataScreen was founded right here — by a resident who saw a way to do something genuinely useful for the community. Give strata buildings a new source of passive income. Give local businesses a smarter way to reach the people most likely to become their customers. Keep things simple, transparent, and grounded in the neighbourhoods we all actually live in.</p>
-  </div>
-  <div class="about-stat-block">
-    <div class="about-stat-num">$0</div>
-    <div class="about-stat-label">cost to your<br>strata, ever</div>
   </div>
 </div>
 
