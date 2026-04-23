@@ -234,7 +234,7 @@ footer {
 
 /* ── MAIN CONTACT LAYOUT ── */
 .contact-main { background: var(--white); padding: 64px 60px; }
-.contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+.contact-grid { display: grid; grid-template-columns: 1fr; max-width: 640px; }
 
 /* ── FORM COLUMN (LEFT) ── */
 .form-section-label {
@@ -396,7 +396,7 @@ footer {
         </div>
         <div class="form-field">
           <label for="phone">Phone (optional)</label>
-          <input type="tel" id="phone" name="phone" placeholder="604-xxx-xxxx">
+          <input type="tel" id="phone" name="phone" placeholder="xxx-xxx-xxxx">
         </div>
         <div class="form-field">
           <label for="type">I am reaching out as a...</label>
@@ -409,7 +409,7 @@ footer {
         </div>
         <div class="form-field">
           <label for="building">Building / Business name (optional)</label>
-          <input type="text" id="building" name="building" placeholder="e.g. Yorkson Park East, or ABC Dental">
+          <input type="text" id="building" name="building" placeholder="e.g. The Commons or ABC Dental">
         </div>
         <div class="form-field">
           <label for="message">Your message</label>
@@ -425,20 +425,6 @@ footer {
       </div>
     </div>
 
-    <!-- RIGHT: PHONE ONLY -->
-    <div class="contact-right">
-
-      <div class="phone-block">
-        <div class="phone-block-label">Give us a ring</div>
-        <h3>Prefer to talk?</h3>
-        <a href="tel:6043880677" class="phone-num">604-388-0677</a>
-        <p class="phone-note">
-          <strong>Available 7 days a week.</strong><br>
-          If we don't pick up, leave a voicemail and we'll get back to you as soon as possible — usually the same day.
-        </p>
-      </div>
-
-    </div>
   </div>
 </div>
 
@@ -455,11 +441,6 @@ footer {
       <a href="for-businesses.html">For Businesses</a>
       <a href="contact.html">Contact Us</a>
     </nav>
-    <div class="footer-contact-col">
-      <a href="mailto:daniel@stratascreen.ca">daniel@stratascreen.ca</a><br>
-      <a href="tel:6043880677">604-388-0677</a><br>
-      stratascreen.ca
-    </div>
   </div>
   <div class="footer-bottom">© 2025 StrataScreen. All rights reserved.</div>
 </footer>
@@ -483,7 +464,7 @@ if (form) {
       form.style.display = 'none';
       success.style.display = 'block';
     } else {
-      alert('Something went wrong — please try emailing us directly at daniel@stratascreen.ca');
+      alert('Something went wrong — please try again or email us directly.');
     }
   });
 }
