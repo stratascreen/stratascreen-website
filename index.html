@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StrataScreen — Hyper-Local Digital Advertising</title>
+<meta name="description" content="StrataScreen places digital advertising screens in residential building lobbies — connecting local businesses to the residents who live closest to them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+/* === SHARED STYLES === */
+/* StrataScreen — Shared Stylesheet */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1A2744;
+  --teal:        #0D9488;
+  --teal-light:  #14B8A6;
+  --teal-pale:   #CCFBF1;
+  --white:       #FFFFFF;
+  --off:         #F0F6F5;
+  --muted:       #64748B;
+  --text:        #1E293B;
+  --border:      #CBD5E1;
+  --border-lite: #E2E8F0;
+  --slate-pale:  #F1F5F9;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--navy);
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 68px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+.nav-brand { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.3px;
+}
+.nav-logo span { color: var(--teal-light); }
+.nav-tagline {
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--teal-light); }
+.nav-links a.nav-cta {
+  background: var(--teal);
+  color: var(--white);
+  padding: 9px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.nav-links a.nav-cta:hover { background: #0b857a; }
+
+/* hamburger — hidden on desktop */
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; }
+
+/* ── SHARED SECTION PRIMITIVES ── */
+section { padding: 64px 60px; }
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.section-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 580px;
+  margin-bottom: 36px;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--teal);
+  color: var(--white);
+  padding: 13px 26px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: #0b857a; transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.65);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--white); }
+.btn-ghost::after { content: '→'; color: var(--teal-light); transition: transform 0.2s; }
+.btn-ghost:hover::after { transform: translateX(3px); }
+
+/* ── FOOTER ── */
+footer {
+  background: #0f1724;
+  padding: 44px 60px 28px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand .footer-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+}
+.footer-brand .footer-logo span { color: var(--teal-light); }
+.footer-tagline-small { font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+.footer-nav { display: flex; gap: 36px; padding-top: 4px; }
+.footer-nav a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-nav a:hover { color: rgba(255,255,255,0.85); }
+.footer-contact-col { text-align: right; font-size: 12.5px; color: rgba(255,255,255,0.4); line-height: 1.9; }
+.footer-contact-col a { color: var(--teal-light); text-decoration: none; }
+.footer-bottom { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+/* ── PROOF / FEATURE LISTS ── */
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.check-list li {
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  line-height: 1.55;
+}
+.check-list li::before { content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--navy); padding: 20px 24px; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .nav-links.open { display: flex; }
+  .nav-hamburger { display: flex; }
+  section { padding: 44px 24px; }
+  .section-title { font-size: 28px; }
+  footer { padding: 36px 24px 20px; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+  .footer-nav { flex-wrap: wrap; gap: 16px; }
+  .footer-contact-col { text-align: left; }
+}
+
+</style>
+<style>
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 88px 60px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  right: -80px; top: -80px;
+  width: 520px; height: 520px;
+  border-radius: 50%;
+  border: 64px solid rgba(13,148,136,0.09);
+  pointer-events: none;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  right: 200px; bottom: -140px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 44px solid rgba(13,148,136,0.05);
+  pointer-events: none;
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px;
+  color: var(--white);
+  line-height: 1.08;
+  margin-bottom: 22px;
+  letter-spacing: -0.5px;
+}
+.hero h1 em { color: var(--teal-light); font-style: normal; }
+.hero-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  margin-bottom: 36px;
+  max-width: 500px;
+}
+.hero-buttons { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+
+/* ── PROOF BAR ── */
+.proof-bar {
+  background: var(--teal);
+  padding: 16px 60px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.proof-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.92);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.proof-item::before { content: '✓'; font-weight: 700; color: var(--white); }
+
+/* ── HOW IT WORKS ── */
+.how-section { background: var(--white); }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.step-card {
+  background: var(--off);
+  border-radius: 8px;
+  padding: 24px 20px 22px;
+  border-top: 3px solid var(--teal);
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+.step-card:hover { box-shadow: 0 6px 24px rgba(13,148,136,0.10); }
+.step-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 44px;
+  color: rgba(13,148,136,0.14);
+  line-height: 1;
+  position: absolute;
+  top: 12px; right: 16px;
+}
+.step-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 8px;
+  padding-right: 34px;
+  line-height: 1.4;
+}
+.step-body { font-size: 12.5px; color: var(--muted); line-height: 1.65; }
+
+/* ── TWO PATHS ── */
+.paths-section { background: var(--off); }
+.paths-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.path-card {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.path-card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.10); transform: translateY(-2px); }
+
+/* Strata = teal header */
+.path-card.strata .path-card-header { background: var(--teal); }
+/* Businesses = navy header */
+.path-card.biz .path-card-header { background: var(--navy); }
+
+.path-card-header { padding: 28px 28px 22px; }
+.path-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 8px;
+}
+.path-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 27px;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.path-sub {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.65;
+}
+.path-card-body {
+  padding: 22px 28px 26px;
+  background: var(--white);
+}
+.path-list { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 18px; }
+.path-list li {
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  line-height: 1.5;
+}
+.path-list li::before { content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+.path-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.path-cta-link:hover { gap: 9px; }
+.path-cta-link::after { content: '→'; }
+
+/* ── ABOUT STRIP ── */
+.about-strip {
+  background: var(--navy);
+  padding: 60px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+}
+.about-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+.about-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.about-body {
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.8;
+  max-width: 560px;
+}
+.about-stat-block { text-align: center; }
+.about-stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 58px;
+  color: var(--teal-light);
+  line-height: 1;
+}
+.about-stat-label { font-size: 12px; color: rgba(255,255,255,0.38); margin-top: 6px; line-height: 1.4; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .hero { padding: 56px 24px 68px; }
+  .hero h1 { font-size: 38px; }
+  .proof-bar { padding: 14px 24px; gap: 16px; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .paths-grid { grid-template-columns: 1fr; }
+  .about-strip { padding: 44px 24px; grid-template-columns: 1fr; }
+  .about-stat-block { text-align: left; }
+}
+@media (max-width: 540px) {
+  .steps-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo">Strata<span>Screen</span></div>
+    <div class="nav-tagline">Hyper-local digital advertising</div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html" class="active">Home</a>
+    <a href="for-stratas.html">For Stratas</a>
+    <a href="for-businesses.html">For Businesses</a>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Your neighbours are your<br><em>best customers.</em></h1>
+    <p class="hero-sub">StrataScreen places digital advertising screens in residential building lobbies — connecting local businesses to the people who live closest to them, every single day.</p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="for-businesses.html">I'm a local business →</a>
+      <a class="btn-ghost" href="for-stratas.html">I'm a strata council</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-item">No setup fees, ever</div>
+  <div class="proof-item">Zero cost to your strata</div>
+  <div class="proof-item">Category exclusivity available</div>
+  <div class="proof-item">Content approval on every ad</div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-eyebrow">How it works</div>
+  <div class="section-title">Simple, from both sides.</div>
+  <div class="section-sub">StrataScreen handles the screen, the advertisers, and the content — so stratas earn passively and businesses advertise effortlessly.</div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-title">We install a screen in a nearby building</div>
+      <div class="step-body">Commercial-grade displays go into residential strata lobbies at zero cost to the building.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-title">Local businesses advertise on it</div>
+      <div class="step-body">Rotating 10-second slots, seen by every resident who passes through — every single day.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-title">The strata earns passive revenue</div>
+      <div class="step-body">A monthly revenue share paid directly to the strata corporation — no effort required.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-title">We manage everything in between</div>
+      <div class="step-body">Content, maintenance, creative, billing — StrataScreen handles it all, end to end.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TWO PATHS -->
+<section class="paths-section">
+  <div class="section-eyebrow">Who we work with</div>
+  <div class="section-title">Built for two audiences.</div>
+  <div class="section-sub">Whether you're a strata council looking to generate income, or a local business looking to reach your neighbourhood — there's a clear path forward.</div>
+  <div class="paths-grid">
+
+    <!-- STRATA — teal header -->
+    <div class="path-card strata">
+      <div class="path-card-header">
+        <div class="path-tag">For strata corporations &amp; property managers</div>
+        <div class="path-title">Passive revenue.<br>Zero cost.</div>
+        <div class="path-sub">A screen in your lobby that earns your strata money every month — without a single hour of your council's time.</div>
+      </div>
+      <div class="path-card-body">
+        <ul class="path-list">
+          <li>Free screen supply, installation &amp; maintenance</li>
+          <li>Monthly revenue share paid to your strata</li>
+          <li>Final content approval on every ad</li>
+          <li>Flexible agreement — cancel any time</li>
+        </ul>
+        <a href="for-stratas.html" class="path-cta-link">Learn more for stratas</a>
+      </div>
+    </div>
+
+    <!-- BUSINESSES — navy header -->
+    <div class="path-card biz">
+      <div class="path-card-header">
+        <div class="path-tag">For local businesses</div>
+        <div class="path-title">Reach your<br>neighbourhood.</div>
+        <div class="path-sub">No algorithms. No bidding against the whole city. Just your business, in the buildings nearest to you, every day.</div>
+      </div>
+      <div class="path-card-body">
+        <ul class="path-list">
+          <li>10-second rotating ad slot in nearby buildings</li>
+          <li>Creative design assistance included</li>
+          <li>QR code tracking at no extra cost</li>
+          <li>Pricing from $100/month — no setup fees</li>
+        </ul>
+        <a href="for-businesses.html" class="path-cta-link">Learn more for businesses</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-strip">
+  <div>
+    <div class="about-eyebrow">Who we are</div>
+    <div class="about-title">Local, by design.</div>
+    <p class="about-body">StrataScreen was founded right here — by a resident who saw a way to do something genuinely useful for the community. Give strata buildings a new source of passive income. Give local businesses a smarter way to reach the people most likely to become their customers. Keep things simple, transparent, and grounded in the neighbourhoods we all actually live in.</p>
+  </div>
+  <div class="about-stat-block">
+    <div class="about-stat-num">$0</div>
+    <div class="about-stat-label">cost to your<br>strata, ever</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">Strata<span>Screen</span></a>
+      <div class="footer-tagline-small">Hyper-local digital advertising</div>
+    </div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="for-stratas.html">For Stratas</a>
+      <a href="for-businesses.html">For Businesses</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <div class="footer-contact-col">
+      <a href="mailto:daniel@stratascreen.ca">daniel@stratascreen.ca</a><br>
+      <a href="tel:6043880677">604-388-0677</a><br>
+      stratascreen.ca
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 StrataScreen. All rights reserved.</div>
+</footer>
+
+<script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+</script>
+</body>
+</html>

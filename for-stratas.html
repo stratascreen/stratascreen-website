@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Stratas — StrataScreen</title>
+<meta name="description" content="StrataScreen installs a free digital display in your lobby and pays your strata a monthly revenue share. Zero cost, zero effort from your council.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+/* === SHARED STYLES === */
+/* StrataScreen — Shared Stylesheet */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1A2744;
+  --teal:        #0D9488;
+  --teal-light:  #14B8A6;
+  --teal-pale:   #CCFBF1;
+  --white:       #FFFFFF;
+  --off:         #F0F6F5;
+  --muted:       #64748B;
+  --text:        #1E293B;
+  --border:      #CBD5E1;
+  --border-lite: #E2E8F0;
+  --slate-pale:  #F1F5F9;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--navy);
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 68px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+.nav-brand { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.3px;
+}
+.nav-logo span { color: var(--teal-light); }
+.nav-tagline {
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--teal-light); }
+.nav-links a.nav-cta {
+  background: var(--teal);
+  color: var(--white);
+  padding: 9px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.nav-links a.nav-cta:hover { background: #0b857a; }
+
+/* hamburger — hidden on desktop */
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; }
+
+/* ── SHARED SECTION PRIMITIVES ── */
+section { padding: 64px 60px; }
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.section-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 580px;
+  margin-bottom: 36px;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--teal);
+  color: var(--white);
+  padding: 13px 26px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: #0b857a; transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.65);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--white); }
+.btn-ghost::after { content: '→'; color: var(--teal-light); transition: transform 0.2s; }
+.btn-ghost:hover::after { transform: translateX(3px); }
+
+/* ── FOOTER ── */
+footer {
+  background: #0f1724;
+  padding: 44px 60px 28px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand .footer-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+}
+.footer-brand .footer-logo span { color: var(--teal-light); }
+.footer-tagline-small { font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+.footer-nav { display: flex; gap: 36px; padding-top: 4px; }
+.footer-nav a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-nav a:hover { color: rgba(255,255,255,0.85); }
+.footer-contact-col { text-align: right; font-size: 12.5px; color: rgba(255,255,255,0.4); line-height: 1.9; }
+.footer-contact-col a { color: var(--teal-light); text-decoration: none; }
+.footer-bottom { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+/* ── PROOF / FEATURE LISTS ── */
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.check-list li {
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  line-height: 1.55;
+}
+.check-list li::before { content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--navy); padding: 20px 24px; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .nav-links.open { display: flex; }
+  .nav-hamburger { display: flex; }
+  section { padding: 44px 24px; }
+  .section-title { font-size: 28px; }
+  footer { padding: 36px 24px 20px; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+  .footer-nav { flex-wrap: wrap; gap: 16px; }
+  .footer-contact-col { text-align: left; }
+}
+
+</style>
+<style>
+
+/* ── PAGE HERO ── */
+.page-hero {
+  background: var(--navy);
+  padding: 68px 60px 78px;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 440px; height: 440px;
+  border-radius: 50%;
+  border: 56px solid rgba(13,148,136,0.09);
+  pointer-events: none;
+}
+.page-hero-inner { position: relative; z-index: 1; max-width: 700px; }
+.page-hero-eyebrow {
+  display: inline-block;
+  background: rgba(20,184,166,0.14);
+  border: 1px solid rgba(20,184,166,0.25);
+  color: var(--teal-light);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+.page-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 46px;
+  color: var(--white);
+  line-height: 1.12;
+  margin-bottom: 16px;
+}
+.page-hero h1 em { color: var(--teal-light); font-style: normal; }
+.page-hero p { font-size: 16px; color: rgba(255,255,255,0.62); line-height: 1.8; }
+
+/* ── PROBLEM ── */
+.problem-section { background: var(--white); }
+.problem-quote {
+  background: var(--off);
+  border-left: 4px solid var(--teal);
+  border-radius: 0 6px 6px 0;
+  padding: 18px 22px;
+  margin-bottom: 26px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: var(--navy);
+  line-height: 1.65;
+}
+.problem-body { font-size: 15px; color: var(--text); line-height: 1.85; max-width: 740px; }
+.problem-body p + p { margin-top: 14px; }
+.problem-body strong { color: var(--navy); font-weight: 600; }
+
+/* ── HOW IT WORKS ── */
+.how-section { background: var(--off); }
+.how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.how-step {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 22px 20px 20px;
+  border-top: 3px solid var(--teal);
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+.how-step:hover { box-shadow: 0 5px 22px rgba(13,148,136,0.09); }
+.step-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: rgba(13,148,136,0.13); line-height: 1; position: absolute; top: 12px; right: 14px; }
+.step-title { font-size: 13.5px; font-weight: 600; color: var(--navy); margin-bottom: 7px; padding-right: 30px; line-height: 1.4; }
+.step-body { font-size: 12.5px; color: var(--muted); line-height: 1.65; }
+
+/* ── WHAT YOU GET ── */
+.get-section { background: var(--white); }
+.get-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.get-card { border: 1.5px solid var(--border); border-radius: 8px; padding: 22px 22px; }
+.get-card.featured { border-color: var(--teal); background: #F0FDF9; }
+.get-card-label { font-size: 9.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.get-card.featured .get-card-label { color: var(--teal); }
+
+/* ── REVENUE ── */
+.revenue-section { background: var(--navy); padding: 64px 60px; }
+.revenue-section .section-title { color: var(--white); }
+.revenue-section .section-sub { color: rgba(255,255,255,0.5); }
+.revenue-section .section-eyebrow { color: var(--teal-light); opacity: 0.85; }
+.revenue-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1.5px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.rev-card { padding: 26px 24px; background: rgba(255,255,255,0.04); border-right: 1px solid rgba(255,255,255,0.08); }
+.rev-card:last-child { border-right: none; background: rgba(13,148,136,0.14); }
+.rev-phase { font-size: 9.5px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 3px; }
+.rev-period { font-size: 11px; font-weight: 600; color: var(--teal-light); margin-bottom: 14px; }
+.rev-amount { font-family: 'DM Serif Display', serif; font-size: 38px; color: var(--white); line-height: 1; }
+.rev-amount span { font-family: 'DM Sans', sans-serif; font-size: 14px; color: rgba(255,255,255,0.42); font-weight: 400; }
+.rev-annual { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.65); margin-top: 5px; }
+.rev-detail { font-size: 10.5px; color: rgba(255,255,255,0.32); margin-top: 6px; line-height: 1.4; }
+.rev-disclaimer { font-size: 11px; color: rgba(255,255,255,0.28); font-style: italic; margin-top: 14px; line-height: 1.5; }
+
+/* ── CONTENT STANDARDS ── */
+.standards-section { background: var(--off); }
+.standards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.std-box { border-radius: 8px; padding: 18px 20px; }
+.std-box.yes { border: 1.5px solid var(--teal); background: #F0FDF9; }
+.std-box.no  { border: 1.5px solid #FCA5A5; background: #FFF5F5; }
+.std-label { font-size: 9.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+.std-box.yes .std-label { color: var(--teal); }
+.std-box.no  .std-label { color: #DC2626; }
+.pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill { font-size: 10.5px; font-weight: 500; padding: 3px 11px; border-radius: 20px; }
+.pill.y { background: var(--teal-pale); color: var(--teal); border: 1px solid rgba(13,148,136,0.25); }
+.pill.n { background: #FEE2E2; color: #DC2626; border: 1px solid rgba(220,38,38,0.2); }
+
+/* ── CTA STRIP ── */
+.cta-strip {
+  background: var(--teal);
+  padding: 50px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+.cta-left h2 { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--white); margin-bottom: 8px; }
+.cta-left p { font-size: 14px; color: rgba(255,255,255,0.78); }
+.cta-btn {
+  background: var(--white);
+  color: var(--teal);
+  padding: 14px 30px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.cta-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .page-hero { padding: 48px 24px 58px; }
+  .page-hero h1 { font-size: 34px; }
+  .how-steps { grid-template-columns: 1fr; }
+  .get-grid { grid-template-columns: 1fr; }
+  .revenue-cards { grid-template-columns: 1fr; }
+  .rev-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .standards-grid { grid-template-columns: 1fr; }
+  .cta-strip { flex-direction: column; align-items: flex-start; padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo">Strata<span>Screen</span></div>
+    <div class="nav-tagline">Hyper-local digital advertising</div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="for-stratas.html" class="active">For Stratas</a>
+    <a href="for-businesses.html">For Businesses</a>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">For Strata Corporations &amp; Property Managers</div>
+    <h1>Your building deserves more<br>than <em>just enough.</em></h1>
+    <p>A free digital screen in your lobby. Monthly revenue for your strata. Zero cost, zero effort from your council.</p>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="section-eyebrow">The challenge every strata faces</div>
+  <div class="section-title">Strata fees go up. Reserves stay thin.</div>
+  <div class="problem-quote">"What happens when the reserve fund looks healthy on paper — until one bad winter hits the boiler?"</div>
+  <div class="problem-body">
+    <p>Strata councils are asked to make hard decisions constantly: Which repairs can wait? How much of a fee increase will residents accept? Is the contingency reserve actually enough — or does it just <strong>feel</strong> like enough until it isn't?</p>
+    <p>The honest answer for most buildings is that there's never quite enough cushion. <strong>There's no slack in the system.</strong> One surprise eats months of reserves, and the only lever available is raising fees on residents who are already stretched.</p>
+    <p>That's the reality. And it's nobody's fault — it's just a structural problem with how strata financing works. What if your lobby could help fix that?</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-eyebrow">How it works</div>
+  <div class="section-title">Effortless, from day one.</div>
+  <div class="section-sub">Your council doesn't need to do anything after saying yes. We handle every part of this.</div>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="step-num">1</div>
+      <div class="step-title">We install a commercial-grade screen in your lobby</div>
+      <div class="step-body">Zero cost to your strata. We supply, deliver, and install everything. No effort required from your council.</div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">2</div>
+      <div class="step-title">Local businesses advertise on the screen</div>
+      <div class="step-body">Nearby dentists, realtors, gyms, and service businesses rotate ads every 10 seconds. You approve every ad before it goes live.</div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">3</div>
+      <div class="step-title">Your strata receives a monthly revenue share</div>
+      <div class="step-body">Passive income, paid directly to your strata corporation by the 10th business day of each month — with a full statement.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="get-section">
+  <div class="section-eyebrow">What your strata gets</div>
+  <div class="section-title">The full picture.</div>
+  <div class="get-grid">
+    <div class="get-card featured">
+      <div class="get-card-label">Your strata receives</div>
+      <ul class="check-list">
+        <li>Free screen supply, installation &amp; ongoing maintenance</li>
+        <li>Monthly revenue share paid directly to your strata</li>
+        <li>Content approval rights — final say on every ad</li>
+        <li>Modern, professional addition to your lobby aesthetic</li>
+        <li>No long-term lock-in required</li>
+        <li>Full screen removal at no cost if you ever want out</li>
+      </ul>
+    </div>
+    <div class="get-card">
+      <div class="get-card-label">We take care of</div>
+      <ul class="check-list">
+        <li>All advertiser relationships — no work for your council</li>
+        <li>Remote monitoring and all technical maintenance</li>
+        <li>Content moderation — nothing inappropriate runs</li>
+        <li>Strata community notices displayed at no charge</li>
+        <li>Hardware insurance coverage</li>
+        <li>Any and all repairs at our cost</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE -->
+<section class="revenue-section">
+  <div class="section-eyebrow">What your strata could earn</div>
+  <div class="section-title">Illustrative revenue estimates.</div>
+  <div class="section-sub">Based on a typical building with rotating advertisers. Actual revenue depends on building size and agreed revenue share percentage.</div>
+  <div class="revenue-cards">
+    <div class="rev-card">
+      <div class="rev-phase">Launch phase</div>
+      <div class="rev-period">Months 1–6</div>
+      <div class="rev-amount">$270<span>/mo</span></div>
+      <div class="rev-annual">~$1,620 in first 6 months</div>
+      <div class="rev-detail">30% share · 6 advertisers · $150/slot avg</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-phase">Ongoing phase</div>
+      <div class="rev-period">Month 7 onward</div>
+      <div class="rev-amount">$750<span>/mo</span></div>
+      <div class="rev-annual">~$9,000/year per screen</div>
+      <div class="rev-detail">50% share · 10 advertisers · $150/slot avg</div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-phase">Mature screen</div>
+      <div class="rev-period">12 advertisers</div>
+      <div class="rev-amount">$900<span>/mo</span></div>
+      <div class="rev-annual">~$10,800/year per screen</div>
+      <div class="rev-detail">50% share · 12 advertisers · $150/slot avg</div>
+    </div>
+  </div>
+  <div class="rev-disclaimer">Illustrative estimates only. Exact revenue share percentage agreed upon before signing. The strata's exposure is always zero — if slots aren't filled, you simply earn less, never less than nothing.</div>
+</section>
+
+<!-- CONTENT STANDARDS -->
+<section class="standards-section">
+  <div class="section-eyebrow">What goes on the screen</div>
+  <div class="section-title">Appropriate for residents. Always.</div>
+  <div class="section-sub">Every category is pre-screened, and you have final approval on every ad before it runs in your building.</div>
+  <div class="standards-grid">
+    <div class="std-box yes">
+      <div class="std-label">✓ Permitted advertisers</div>
+      <div class="pills">
+        <span class="pill y">Dental &amp; medical</span>
+        <span class="pill y">Physiotherapy</span>
+        <span class="pill y">Restaurants &amp; cafés</span>
+        <span class="pill y">Realtors</span>
+        <span class="pill y">Gyms &amp; fitness</span>
+        <span class="pill y">Home services</span>
+        <span class="pill y">Tutoring &amp; childcare</span>
+        <span class="pill y">Pharmacies</span>
+        <span class="pill y">Walk-in clinics</span>
+      </div>
+    </div>
+    <div class="std-box no">
+      <div class="std-label">✕ Always excluded</div>
+      <div class="pills">
+        <span class="pill n">Liquor &amp; nightclubs</span>
+        <span class="pill n">Adult content</span>
+        <span class="pill n">Cannabis retail</span>
+        <span class="pill n">Gambling</span>
+        <span class="pill n">Payday loans</span>
+        <span class="pill n">Political messaging</span>
+        <span class="pill n">Religious messaging</span>
+        <span class="pill n">Competing mgmt services</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="cta-left">
+    <h2>Ready to learn more?</h2>
+    <p>No commitment required — let's have a quick conversation about your building.</p>
+  </div>
+  <a class="cta-btn" href="contact.html">Get in touch →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">Strata<span>Screen</span></a>
+      <div class="footer-tagline-small">Hyper-local digital advertising</div>
+    </div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="for-stratas.html">For Stratas</a>
+      <a href="for-businesses.html">For Businesses</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <div class="footer-contact-col">
+      <a href="mailto:daniel@stratascreen.ca">daniel@stratascreen.ca</a><br>
+      <a href="tel:6043880677">604-388-0677</a><br>
+      stratascreen.ca
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 StrataScreen. All rights reserved.</div>
+</footer>
+
+<script>function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }</script>
+</body>
+</html>

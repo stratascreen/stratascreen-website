@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Businesses — StrataScreen</title>
+<meta name="description" content="Advertise in nearby residential building lobbies. Reach the people who live closest to your business — every single day. No setup fees. Pricing from $100/month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+/* === SHARED STYLES === */
+/* StrataScreen — Shared Stylesheet */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1A2744;
+  --teal:        #0D9488;
+  --teal-light:  #14B8A6;
+  --teal-pale:   #CCFBF1;
+  --white:       #FFFFFF;
+  --off:         #F0F6F5;
+  --muted:       #64748B;
+  --text:        #1E293B;
+  --border:      #CBD5E1;
+  --border-lite: #E2E8F0;
+  --slate-pale:  #F1F5F9;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--navy);
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 68px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+.nav-brand { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.3px;
+}
+.nav-logo span { color: var(--teal-light); }
+.nav-tagline {
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--teal-light); }
+.nav-links a.nav-cta {
+  background: var(--teal);
+  color: var(--white);
+  padding: 9px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.nav-links a.nav-cta:hover { background: #0b857a; }
+
+/* hamburger — hidden on desktop */
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; }
+
+/* ── SHARED SECTION PRIMITIVES ── */
+section { padding: 64px 60px; }
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.section-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 580px;
+  margin-bottom: 36px;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--teal);
+  color: var(--white);
+  padding: 13px 26px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: #0b857a; transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.65);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--white); }
+.btn-ghost::after { content: '→'; color: var(--teal-light); transition: transform 0.2s; }
+.btn-ghost:hover::after { transform: translateX(3px); }
+
+/* ── FOOTER ── */
+footer {
+  background: #0f1724;
+  padding: 44px 60px 28px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand .footer-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+}
+.footer-brand .footer-logo span { color: var(--teal-light); }
+.footer-tagline-small { font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+.footer-nav { display: flex; gap: 36px; padding-top: 4px; }
+.footer-nav a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-nav a:hover { color: rgba(255,255,255,0.85); }
+.footer-contact-col { text-align: right; font-size: 12.5px; color: rgba(255,255,255,0.4); line-height: 1.9; }
+.footer-contact-col a { color: var(--teal-light); text-decoration: none; }
+.footer-bottom { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+/* ── PROOF / FEATURE LISTS ── */
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.check-list li {
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  line-height: 1.55;
+}
+.check-list li::before { content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--navy); padding: 20px 24px; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .nav-links.open { display: flex; }
+  .nav-hamburger { display: flex; }
+  section { padding: 44px 24px; }
+  .section-title { font-size: 28px; }
+  footer { padding: 36px 24px 20px; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+  .footer-nav { flex-wrap: wrap; gap: 16px; }
+  .footer-contact-col { text-align: left; }
+}
+
+</style>
+<style>
+
+/* ── PAGE HERO ── */
+.page-hero {
+  background: var(--teal);
+  padding: 68px 60px 78px;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 440px; height: 440px;
+  border-radius: 50%;
+  border: 56px solid rgba(255,255,255,0.08);
+  pointer-events: none;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  left: -80px; bottom: -100px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  border: 36px solid rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+.page-hero-inner { position: relative; z-index: 1; max-width: 700px; }
+.page-hero-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.9);
+  font-size: 10px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 20px; margin-bottom: 18px;
+}
+.page-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 46px; color: var(--white); line-height: 1.12; margin-bottom: 16px;
+}
+.page-hero p { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.8; }
+
+/* ── PROBLEM / COMPARISON ── */
+.problem-section { background: var(--white); }
+.comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 0; }
+.comp-card { border-radius: 8px; padding: 22px 22px; }
+.comp-card.bad { background: #FFF5F5; border: 1.5px solid #FCA5A5; }
+.comp-card.good { background: #F0FDF9; border: 1.5px solid var(--teal); }
+.comp-label { font-size: 9.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+.comp-card.bad .comp-label { color: #DC2626; }
+.comp-card.good .comp-label { color: var(--teal); }
+.comp-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.comp-list li { font-size: 13px; color: var(--text); line-height: 1.5; display: flex; align-items: flex-start; gap: 9px; }
+.comp-list.bad li::before { content: '✕'; color: #DC2626; flex-shrink: 0; font-weight: 700; }
+.comp-list.good li::before { content: '✓'; color: var(--teal); flex-shrink: 0; font-weight: 700; }
+
+/* ── STATS ── */
+.stats-strip {
+  background: var(--navy);
+  padding: 48px 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.stat-item { text-align: center; padding: 0 24px; border-right: 1px solid rgba(255,255,255,0.09); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'DM Serif Display', serif; font-size: 52px; color: var(--white); line-height: 1; margin-bottom: 10px; }
+.stat-num span { color: var(--teal-light); }
+.stat-label { font-size: 13px; color: rgba(255,255,255,0.52); line-height: 1.55; max-width: 200px; margin: 0 auto; }
+
+/* ── HOW IT WORKS ── */
+.how-section { background: var(--off); }
+.how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.how-step { background: var(--white); border-radius: 8px; padding: 22px 20px 20px; border-top: 3px solid var(--teal); position: relative; transition: box-shadow 0.2s; }
+.how-step:hover { box-shadow: 0 5px 22px rgba(13,148,136,0.09); }
+.step-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: rgba(13,148,136,0.13); line-height: 1; position: absolute; top: 12px; right: 14px; }
+.step-title { font-size: 13.5px; font-weight: 600; color: var(--navy); margin-bottom: 7px; padding-right: 30px; line-height: 1.4; }
+.step-body { font-size: 12.5px; color: var(--muted); line-height: 1.65; }
+
+/* ── WHAT YOU GET ── */
+.get-section { background: var(--white); }
+.get-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.get-card { border: 1.5px solid var(--border); border-radius: 8px; padding: 22px 22px; }
+.get-card.featured { border-color: var(--teal); background: #F0FDF9; }
+.get-card-label { font-size: 9.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.get-card.featured .get-card-label { color: var(--teal); }
+
+/* ── PRICING ── */
+.pricing-section { background: var(--off); }
+.pricing-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
+.pricing-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
+.pricing-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.09); transform: translateY(-2px); }
+.pricing-card-top { padding: 18px 20px 14px; background: var(--off); border-bottom: 1.5px solid var(--border); }
+.pricing-card-name { font-size: 9.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+.pricing-card-rate { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--navy); line-height: 1; }
+.pricing-card-rate sub { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--muted); font-weight: 400; vertical-align: baseline; }
+.pricing-card-body { padding: 16px 20px 18px; }
+.pricing-card-perks { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.pricing-card-perks li { font-size: 12.5px; color: var(--text); display: flex; align-items: flex-start; gap: 7px; line-height: 1.5; }
+.pricing-card-perks li::before { content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+.pricing-note {
+  padding: 12px 18px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--muted);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+.pricing-note strong { font-style: normal; font-weight: 600; color: var(--text); }
+
+/* ── WHO THIS IS FOR ── */
+.audience-section { background: var(--white); }
+.audience-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.audience-pill {
+  background: var(--off);
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 500;
+  transition: border-color 0.2s, background 0.2s;
+}
+.audience-pill:hover { border-color: var(--teal); background: #F0FDF9; }
+
+/* ── CTA ── */
+.cta-strip {
+  background: var(--navy);
+  padding: 50px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+.cta-left h2 { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--white); margin-bottom: 8px; }
+.cta-left p { font-size: 14px; color: rgba(255,255,255,0.58); }
+.cta-btn { background: var(--teal); color: var(--white); padding: 14px 30px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap; transition: background 0.2s, transform 0.15s; }
+.cta-btn:hover { background: #0b857a; transform: translateY(-1px); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .page-hero { padding: 48px 24px 58px; }
+  .page-hero h1 { font-size: 34px; }
+  .comparison-grid { grid-template-columns: 1fr; }
+  .stats-strip { grid-template-columns: 1fr; padding: 36px 24px; gap: 24px; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.09); padding-bottom: 20px; }
+  .stat-item:last-child { border-bottom: none; }
+  .how-steps { grid-template-columns: 1fr; }
+  .get-grid { grid-template-columns: 1fr; }
+  .pricing-cards { grid-template-columns: 1fr; }
+  .cta-strip { flex-direction: column; align-items: flex-start; padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo">Strata<span>Screen</span></div>
+    <div class="nav-tagline">Hyper-local digital advertising</div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="for-stratas.html">For Stratas</a>
+    <a href="for-businesses.html" class="active">For Businesses</a>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </div>
+  <div class="nav-hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">For Local Businesses</div>
+    <h1>Stop advertising to the whole city.<br>Start advertising to your neighbourhood.</h1>
+    <p>Your best customers already live near you. StrataScreen puts your business in front of them — every single day, in the buildings closest to your door.</p>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="section-eyebrow">The problem with local advertising</div>
+  <div class="section-title">Most local ad channels work against you.</div>
+  <div class="section-sub">If you've run Google Ads, you know the feeling — you're instantly competing against every business in your category across the entire region, and you're only visible when someone already knows to search for you.</div>
+  <div class="comparison-grid">
+    <div class="comp-card bad">
+      <div class="comp-label">✕ The alternatives</div>
+      <ul class="comp-list bad">
+        <li>Google Ads: bidding against every business in the region</li>
+        <li>Canada Post flyers: one delivery, usually discarded same day</li>
+        <li>Social media: reach is unpredictable, requires constant content</li>
+        <li>None of these target the specific people who live near you</li>
+      </ul>
+    </div>
+    <div class="comp-card good">
+      <div class="comp-label">✓ StrataScreen</div>
+      <ul class="comp-list good">
+        <li>Same building, same residents, every single day</li>
+        <li>No algorithms deciding whether people see your ad</li>
+        <li>Only a small number of local businesses per screen</li>
+        <li>The people in that building are already your neighbours</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">10<span>s</span></div>
+    <div class="stat-label">dedicated slot — not buried in a feed, not skippable</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">617<span>×</span></div>
+    <div class="stat-label">times your ad appears in the lobby in a single day</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">5<span>km</span></div>
+    <div class="stat-label">radius — residents in that building are already your neighbours</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-eyebrow">How it works</div>
+  <div class="section-title">Getting started takes about 10 minutes.</div>
+  <div class="section-sub">You pick a building. We handle the rest — design, upload, and everything in between.</div>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="step-num">1</div>
+      <div class="step-title">Quick call to pick your building and plan</div>
+      <div class="step-body">We'll tell you exactly which buildings we're in, how many households, and what it costs — takes about two minutes.</div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">2</div>
+      <div class="step-title">Send your logo and a message — we handle the creative</div>
+      <div class="step-body">You don't need to design anything. Just tell us what you do and what offer you want to run.</div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">3</div>
+      <div class="step-title">Your ad goes live — residents see it from day one</div>
+      <div class="step-body">Your business runs in a 10-second slot in the building rotation. Same residents, every single day.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="get-section">
+  <div class="section-eyebrow">What you get</div>
+  <div class="section-title">Everything included. No hidden extras.</div>
+  <div class="get-grid">
+    <div class="get-card featured">
+      <div class="get-card-label">Included with every plan</div>
+      <ul class="check-list">
+        <li>Ad creative design assistance — just send your logo and message</li>
+        <li>Remote content updates — refresh your offer any time</li>
+        <li>Optional QR code placement at no extra charge</li>
+        <li>No setup fees, ever</li>
+        <li>Category consideration — we limit competing businesses per screen</li>
+      </ul>
+    </div>
+    <div class="get-card">
+      <div class="get-card-label">Optional on 6-month+ plans</div>
+      <ul class="check-list">
+        <li>Category Exclusivity — block competitors in your industry from advertising in the same building</li>
+        <li>First-mover advantage — lock it before a competitor does</li>
+        <li>Flat fee per building, starting at $50/month</li>
+        <li>Automatically renewed when your subscription renews</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="section-eyebrow">Pricing</div>
+  <div class="section-title">Simple. Transparent. Based on reach.</div>
+  <div class="section-sub">Pricing is based on the number of households in your building — you pay for reach, nothing more. Minimum $100/building/month.</div>
+  <div class="pricing-cards">
+    <div class="pricing-card">
+      <div class="pricing-card-top">
+        <div class="pricing-card-name">3-Month Plan</div>
+        <div class="pricing-card-rate">$1.75<sub>/unit/mo</sub></div>
+      </div>
+      <div class="pricing-card-body">
+        <ul class="pricing-card-perks">
+          <li>One 10-second rotating ad slot</li>
+          <li>Ad creative design assistance</li>
+          <li>QR code tracking included</li>
+          <li>1 free ad change per term</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-top">
+        <div class="pricing-card-name">6-Month Plan</div>
+        <div class="pricing-card-rate">$1.60<sub>/unit/mo</sub></div>
+      </div>
+      <div class="pricing-card-body">
+        <ul class="pricing-card-perks">
+          <li>Everything in 3-Month</li>
+          <li>2 free ad changes per term</li>
+          <li>Category exclusivity available</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-top">
+        <div class="pricing-card-name">12-Month Plan</div>
+        <div class="pricing-card-rate">$1.40<sub>/unit/mo</sub></div>
+      </div>
+      <div class="pricing-card-body">
+        <ul class="pricing-card-perks">
+          <li>Everything in 6-Month</li>
+          <li>12 free ad changes per term</li>
+          <li>Best value per impression</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pricing-note"><strong>Example:</strong> A typical 87-unit building = $150/mo on a 3-month plan, $140/mo on 6-month. Want the exact number for a specific building? <a href="contact.html" style="color:var(--teal); font-weight:600; font-style:normal;">We'll look it up together — takes 2 minutes.</a></div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="audience-section">
+  <div class="section-eyebrow">Who this is for</div>
+  <div class="section-title">Local businesses where proximity matters.</div>
+  <div class="section-sub">StrataScreen works best for businesses whose customers are local by nature — where being nearby and trusted matters more than having the highest search ranking.</div>
+  <div class="audience-grid">
+    <div class="audience-pill">🦷 Dental &amp; dental hygiene</div>
+    <div class="audience-pill">🏠 Realtors &amp; mortgage brokers</div>
+    <div class="audience-pill">💪 Gyms &amp; fitness studios</div>
+    <div class="audience-pill">🍜 Restaurants &amp; cafés</div>
+    <div class="audience-pill">🔧 Home services</div>
+    <div class="audience-pill">🩺 Physiotherapy &amp; chiro</div>
+    <div class="audience-pill">📚 Tutoring &amp; childcare</div>
+    <div class="audience-pill">💊 Pharmacies &amp; walk-in clinics</div>
+    <div class="audience-pill">🐾 Veterinarians &amp; pet services</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="cta-left">
+    <h2>Ready to reach your neighbours?</h2>
+    <p>No pressure, no commitment to start — let's talk through your specific building.</p>
+  </div>
+  <a class="cta-btn" href="contact.html">Get in touch →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">Strata<span>Screen</span></a>
+      <div class="footer-tagline-small">Hyper-local digital advertising</div>
+    </div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="for-stratas.html">For Stratas</a>
+      <a href="for-businesses.html">For Businesses</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    <div class="footer-contact-col">
+      <a href="mailto:daniel@stratascreen.ca">daniel@stratascreen.ca</a><br>
+      <a href="tel:6043880677">604-388-0677</a><br>
+      stratascreen.ca
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 StrataScreen. All rights reserved.</div>
+</footer>
+
+<script>function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }</script>
+</body>
+</html>
