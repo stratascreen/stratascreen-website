@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use — StrataScreen</title>
+<meta name="description" content="Terms of Use for stratascreen.ca — governing your use of our website and its content.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+/* === SHARED STYLES === */
+/* StrataScreen — Shared Stylesheet */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1A2744;
+  --teal:        #0D9488;
+  --teal-light:  #14B8A6;
+  --teal-pale:   #CCFBF1;
+  --white:       #FFFFFF;
+  --off:         #F0F6F5;
+  --muted:       #64748B;
+  --text:        #1E293B;
+  --border:      #CBD5E1;
+  --border-lite: #E2E8F0;
+  --slate-pale:  #F1F5F9;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--navy);
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 68px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+.nav-brand { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.3px;
+}
+.nav-logo span { color: var(--teal-light); }
+.nav-tagline {
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--teal-light); }
+.nav-links a.nav-cta {
+  background: var(--teal);
+  color: var(--white);
+  padding: 9px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.nav-links a.nav-cta:hover { background: #0b857a; }
+
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; }
+
+/* ── FOOTER ── */
+footer {
+  background: #0f1724;
+  padding: 44px 60px 28px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand .footer-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+}
+.footer-brand .footer-logo span { color: var(--teal-light); }
+.footer-tagline-small { font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+.footer-bottom { font-size: 11px; color: rgba(255,255,255,0.2); }
+.footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-bottom a:hover { color: rgba(255,255,255,0.65); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--navy); padding: 20px 24px; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .nav-links.open { display: flex; }
+  .nav-hamburger { display: flex; }
+  footer { padding: 36px 24px 20px; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+}
+</style>
+
+<style>
+/* ── LEGAL PAGE STYLES ── */
+.legal-hero {
+  background: var(--navy);
+  padding: 52px 60px 44px;
+  position: relative;
+  overflow: hidden;
+}
+.legal-hero::after {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 48px solid rgba(13,148,136,0.10);
+  pointer-events: none;
+}
+.legal-hero-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+.legal-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+/* EDITABLE: update this date whenever you revise these terms */
+.legal-updated {
+  font-size: 12px;
+  color: rgba(255,255,255,0.38);
+  position: relative;
+  z-index: 1;
+}
+
+.legal-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 52px 60px 72px;
+}
+
+.summary-box {
+  background: var(--off);
+  border-left: 4px solid var(--teal);
+  border-radius: 6px;
+  padding: 16px 20px;
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 44px;
+}
+.summary-box strong { color: var(--navy); font-weight: 600; }
+
+.legal-section { margin-bottom: 36px; }
+.legal-section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 21px;
+  color: var(--navy);
+  margin-bottom: 4px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border);
+}
+.legal-section:first-of-type .legal-section-title {
+  border-top: none;
+  padding-top: 0;
+}
+.legal-section-eyebrow {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+.legal-body {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.legal-body strong { font-weight: 600; color: var(--navy); }
+.legal-body a { color: var(--teal); text-decoration: none; }
+.legal-body a:hover { text-decoration: underline; }
+
+.legal-list {
+  list-style: none;
+  margin: 0 0 12px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.legal-list li {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.65;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+.legal-list li::before {
+  content: '→';
+  color: var(--teal);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-box {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-top: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.contact-box-text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+}
+.contact-box-text strong { color: var(--white); display: block; font-size: 14px; margin-bottom: 3px; }
+.contact-box-links { text-align: right; }
+.contact-box-links a {
+  display: block;
+  font-size: 12.5px;
+  color: var(--teal-light);
+  text-decoration: none;
+  line-height: 1.8;
+}
+.contact-box-links a:hover { text-decoration: underline; }
+
+@media (max-width: 860px) {
+  .legal-hero { padding: 40px 24px 32px; }
+  .legal-hero h1 { font-size: 30px; }
+  .legal-content { padding: 44px 24px 60px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo">Strata<span>Screen</span></div>
+    <div class="nav-tagline">Hyper-local digital advertising</div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="for-businesses.html">For Businesses</a>
+    <a href="for-stratas.html">For Stratas</a>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="legal-hero">
+  <div class="legal-hero-eyebrow">Legal</div>
+  <h1>Terms of Use</h1>
+  <!-- EDITABLE: update this date whenever you revise these terms -->
+  <div class="legal-updated">Last updated: May 2026</div>
+</div>
+
+<!-- CONTENT -->
+<div class="legal-content">
+
+  <div class="summary-box">
+    <strong>Plain-language summary:</strong> This is a simple presence website. Use it to learn about us and get in touch. The content is ours — please don't reproduce it without permission. Nothing on this site is legal or professional advice, and using the site doesn't create a contract between us.
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Acceptance of Terms</div>
+    <p class="legal-body">
+      By accessing or using <a href="https://stratascreen.ca">stratascreen.ca</a> (the "Site"), you agree to be bound by these Terms of Use. If you do not agree, please do not use this Site. These Terms apply to all visitors, regardless of whether you engage with StrataScreen in any business capacity.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Who We Are</div>
+    <p class="legal-body">
+      The Site is operated by StrataScreen Digital Inc., a corporation incorporated in British Columbia, Canada. References to "StrataScreen," "we," "us," or "our" in these Terms refer to StrataScreen Digital Inc.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Use of This Site</div>
+    <div class="legal-section-eyebrow">Permitted and prohibited use</div>
+    <p class="legal-body">This Site is intended to provide information about StrataScreen's services and to allow interested parties to contact us. You may use it for that purpose. You may not:</p>
+    <ul class="legal-list">
+      <li>Use the Site for any unlawful purpose or in a way that violates any applicable Canadian law or regulation.</li>
+      <li>Attempt to gain unauthorized access to any part of the Site or its underlying systems.</li>
+      <li>Reproduce, distribute, or commercially exploit any content from this Site without our prior written permission.</li>
+      <li>Submit false, misleading, or fraudulent information through any contact form.</li>
+      <li>Use automated tools (bots, scrapers) to collect data from the Site without our consent.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Intellectual Property</div>
+    <div class="legal-section-eyebrow">Ownership of content</div>
+    <p class="legal-body">
+      All content on this Site — including text, graphics, logos, the StrataScreen name and branding, and the overall design — is the property of StrataScreen Digital Inc. and is protected by Canadian copyright and intellectual property law. Nothing on this Site grants you any licence or right to use our intellectual property without express written permission.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">No Professional Advice</div>
+    <p class="legal-body">
+      Nothing on this Site constitutes legal, financial, investment, or professional advice of any kind. Any revenue estimates, projections, or illustrative figures shown on this Site are for informational purposes only and are not guarantees of any outcome. You should not rely on them when making decisions without obtaining appropriate independent professional advice.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">No Business Relationship Created</div>
+    <p class="legal-body">
+      Browsing this Site, submitting a contact form, or communicating with us through the Site does not create a contractual, partnership, or agency relationship between you and StrataScreen. Any business relationship between StrataScreen and a strata corporation or advertiser is governed exclusively by a separately executed written agreement.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Third-Party Links</div>
+    <p class="legal-body">
+      This Site may contain links to third-party websites for your convenience. We do not control those sites and are not responsible for their content, privacy practices, or accuracy. Linking to a third-party site does not imply our endorsement of that site or its content.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Disclaimer of Warranties</div>
+    <p class="legal-body">
+      This Site is provided "as is" and "as available" without any warranty of any kind, express or implied. StrataScreen makes no representations about the accuracy, completeness, or availability of the Site's content. We may update, modify, or remove content at any time without notice.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Limitation of Liability</div>
+    <p class="legal-body">
+      To the fullest extent permitted by applicable law, StrataScreen Digital Inc. shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of or inability to use this Site. This includes, but is not limited to, damages resulting from reliance on any information on the Site.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Governing Law</div>
+    <p class="legal-body">
+      These Terms of Use are governed by the laws of the Province of British Columbia and the federal laws of Canada applicable therein. Any dispute arising from your use of this Site shall be subject to the exclusive jurisdiction of the courts of British Columbia.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Changes to These Terms</div>
+    <p class="legal-body">
+      We may update these Terms of Use from time to time. The "Last updated" date at the top of this page will reflect any revisions. Continued use of the Site after any changes constitutes your acceptance of the revised Terms.
+    </p>
+  </div>
+
+  <div class="contact-box">
+    <div class="contact-box-text">
+      <strong>Questions about these terms?</strong>
+      We're a small team and happy to talk through anything.
+    </div>
+    <div class="contact-box-links">
+      <a href="mailto:hello@stratascreen.ca">hello@stratascreen.ca</a>
+      <a href="contact.html">Contact form →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">Strata<span>Screen</span></a>
+      <div class="footer-tagline-small">Hyper-local digital advertising</div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 StrataScreen Digital Inc. All rights reserved. · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></div>
+</footer>
+
+<script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+</script>
+</body>
+</html>

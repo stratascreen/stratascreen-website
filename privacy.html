@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — StrataScreen</title>
+<meta name="description" content="StrataScreen's Privacy Policy — how we collect, use, and protect your personal information in compliance with BC's PIPA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+/* === SHARED STYLES === */
+/* StrataScreen — Shared Stylesheet */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1A2744;
+  --teal:        #0D9488;
+  --teal-light:  #14B8A6;
+  --teal-pale:   #CCFBF1;
+  --white:       #FFFFFF;
+  --off:         #F0F6F5;
+  --muted:       #64748B;
+  --text:        #1E293B;
+  --border:      #CBD5E1;
+  --border-lite: #E2E8F0;
+  --slate-pale:  #F1F5F9;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--navy);
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 68px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+.nav-brand { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.3px;
+}
+.nav-logo span { color: var(--teal-light); }
+.nav-tagline {
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--teal-light); }
+.nav-links a.nav-cta {
+  background: var(--teal);
+  color: var(--white);
+  padding: 9px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.nav-links a.nav-cta:hover { background: #0b857a; }
+
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; }
+
+/* ── FOOTER ── */
+footer {
+  background: #0f1724;
+  padding: 44px 60px 28px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand .footer-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+}
+.footer-brand .footer-logo span { color: var(--teal-light); }
+.footer-tagline-small { font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+.footer-bottom { font-size: 11px; color: rgba(255,255,255,0.2); }
+.footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-bottom a:hover { color: rgba(255,255,255,0.65); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--navy); padding: 20px 24px; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .nav-links.open { display: flex; }
+  .nav-hamburger { display: flex; }
+  footer { padding: 36px 24px 20px; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+  .legal-content { padding: 44px 24px 60px; }
+}
+</style>
+
+<style>
+/* ── LEGAL PAGE STYLES ── */
+.legal-hero {
+  background: var(--navy);
+  padding: 52px 60px 44px;
+  position: relative;
+  overflow: hidden;
+}
+.legal-hero::after {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 48px solid rgba(13,148,136,0.10);
+  pointer-events: none;
+}
+.legal-hero-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+.legal-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+/* EDITABLE: update this date when you revise the policy */
+.legal-updated {
+  font-size: 12px;
+  color: rgba(255,255,255,0.38);
+  position: relative;
+  z-index: 1;
+}
+
+.legal-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 52px 60px 72px;
+}
+
+.summary-box {
+  background: var(--off);
+  border-left: 4px solid var(--teal);
+  border-radius: 6px;
+  padding: 16px 20px;
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 44px;
+}
+.summary-box strong { color: var(--navy); font-weight: 600; }
+
+.legal-section { margin-bottom: 36px; }
+.legal-section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 21px;
+  color: var(--navy);
+  margin-bottom: 4px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border);
+}
+.legal-section:first-of-type .legal-section-title {
+  border-top: none;
+  padding-top: 0;
+}
+.legal-section-eyebrow {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+.legal-body {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.legal-body strong { font-weight: 600; color: var(--navy); }
+.legal-body a { color: var(--teal); text-decoration: none; }
+.legal-body a:hover { text-decoration: underline; }
+.legal-body em { font-style: italic; }
+
+.legal-list {
+  list-style: none;
+  margin: 0 0 12px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.legal-list li {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.65;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+.legal-list li::before {
+  content: '→';
+  color: var(--teal);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-box {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-top: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.contact-box-text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.65;
+}
+.contact-box-text strong { color: var(--white); display: block; font-size: 14px; margin-bottom: 3px; }
+.contact-box-links { text-align: right; }
+.contact-box-links a {
+  display: block;
+  font-size: 12.5px;
+  color: var(--teal-light);
+  text-decoration: none;
+  line-height: 1.8;
+}
+.contact-box-links a:hover { text-decoration: underline; }
+
+@media (max-width: 860px) {
+  .legal-hero { padding: 40px 24px 32px; }
+  .legal-hero h1 { font-size: 30px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo">Strata<span>Screen</span></div>
+    <div class="nav-tagline">Hyper-local digital advertising</div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="for-businesses.html">For Businesses</a>
+    <a href="for-stratas.html">For Stratas</a>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="legal-hero">
+  <div class="legal-hero-eyebrow">Legal</div>
+  <h1>Privacy Policy</h1>
+  <!-- EDITABLE: update this date whenever you revise this policy -->
+  <div class="legal-updated">Last updated: May 2026</div>
+</div>
+
+<!-- CONTENT -->
+<div class="legal-content">
+
+  <div class="summary-box">
+    <strong>Plain-language summary:</strong> StrataScreen is a small, locally-operated BC business. We don't sell your information, we don't use advertising trackers, and we only collect what we need to respond to you or improve the site. This policy explains exactly what that means.
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Who We Are</div>
+    <div class="legal-section-eyebrow">About StrataScreen</div>
+    <!-- EDITABLE: add a registered business address here once you have one -->
+    <p class="legal-body">
+      StrataScreen Digital Inc. ("StrataScreen," "we," "us," or "our") is a corporation incorporated in British Columbia, Canada. We operate a hyper-local digital advertising service that places screens in residential strata building lobbies in the Fraser Valley and Greater Vancouver region. Our website is located at <a href="https://stratascreen.ca">stratascreen.ca</a>.
+    </p>
+    <p class="legal-body">
+      This Privacy Policy explains how we collect, use, and protect personal information in connection with our website and business operations. We are committed to complying with the <em>Personal Information Protection Act</em> (PIPA), SBC 2003, c. 63 (British Columbia).
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">What Information We Collect</div>
+    <div class="legal-section-eyebrow">Types of personal information</div>
+    <p class="legal-body">We collect personal information only when you choose to provide it or when it is passively collected through standard website technology. This may include:</p>
+    <ul class="legal-list">
+      <li><strong>Contact information</strong> you submit voluntarily — your name, email address, phone number, and business name when you fill out a contact form or reach out to us directly.</li>
+      <li><strong>Communication records</strong> — emails, messages, or notes from conversations we have with you in the course of our business relationship.</li>
+      <li><strong>Basic website usage data</strong> — pages visited, time on site, and general geographic region, collected through analytics tools (see below). This data is aggregated and not linked to your identity.</li>
+    </ul>
+    <p class="legal-body">We do <strong>not</strong> collect sensitive personal information such as financial account details, government identification, or health information through this website.</p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Why We Collect It</div>
+    <div class="legal-section-eyebrow">Purpose of collection</div>
+    <p class="legal-body">We collect personal information only for the following purposes:</p>
+    <ul class="legal-list">
+      <li>To respond to your inquiry or request for information about StrataScreen's services.</li>
+      <li>To communicate with you about an existing or potential business relationship.</li>
+      <li>To understand how visitors use our website so we can improve it.</li>
+      <li>To comply with legal or regulatory obligations.</li>
+    </ul>
+    <p class="legal-body">We will not use your information for any purpose other than those listed above without your consent.</p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Cookies &amp; Analytics</div>
+    <div class="legal-section-eyebrow">Website tracking</div>
+    <!-- EDITABLE: name your analytics tool here once chosen, or simplify if you use none -->
+    <p class="legal-body">
+      Our website may use cookies or similar tracking technologies to collect basic, anonymized analytics about site usage (such as pages viewed and approximate location by region). We do not use advertising cookies or third-party retargeting trackers. If you prefer not to be tracked, most browsers allow you to disable cookies in their settings.
+    </p>
+    <p class="legal-body">
+      If we use a third-party analytics tool, it operates under its own privacy policy. We configure any such tools to anonymize IP addresses where possible.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">How We Protect Your Information</div>
+    <div class="legal-section-eyebrow">Security practices</div>
+    <p class="legal-body">
+      We take reasonable steps to protect personal information from unauthorized access, disclosure, or misuse. Our website uses HTTPS encryption. Access to contact information you submit is limited to StrataScreen's authorized personnel and is not shared with third parties except as described below.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Sharing &amp; Disclosure</div>
+    <div class="legal-section-eyebrow">When we share information</div>
+    <p class="legal-body">We do <strong>not</strong> sell, rent, or trade your personal information. We may share it only in the following limited circumstances:</p>
+    <ul class="legal-list">
+      <li><strong>Service providers:</strong> Trusted third-party tools we use to operate our business (e.g. email hosting, website hosting). These providers are permitted to use your information only to perform services on our behalf.</li>
+      <li><strong>Legal requirements:</strong> If required by law, court order, or a regulatory authority in British Columbia or Canada.</li>
+      <li><strong>Business transfer:</strong> If StrataScreen is acquired or merged, personal information may be transferred to the successor entity, subject to the same privacy commitments.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Retention</div>
+    <div class="legal-section-eyebrow">How long we keep your information</div>
+    <p class="legal-body">
+      We retain personal information only as long as necessary for the purposes it was collected, or as required by law. Contact information submitted through our website is retained for as long as we have an active or potential business relationship with you, and deleted upon request or after a reasonable period of inactivity.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Your Rights</div>
+    <div class="legal-section-eyebrow">Access, correction &amp; deletion</div>
+    <p class="legal-body">
+      Under PIPA, you have the right to request access to the personal information we hold about you, to request corrections if it is inaccurate, and to withdraw consent for its use. To exercise any of these rights, contact us using the details below. We will respond within thirty (30) days.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <div class="legal-section-title">Changes to This Policy</div>
+    <p class="legal-body">
+      We may update this Privacy Policy from time to time as our business or legal requirements change. The "Last updated" date at the top of this page will reflect any revisions. Continued use of our website after a change constitutes acceptance of the updated policy.
+    </p>
+  </div>
+
+  <div class="contact-box">
+    <div class="contact-box-text">
+      <strong>Privacy questions?</strong>
+      We're happy to answer anything about how we handle your information.
+    </div>
+    <div class="contact-box-links">
+      <a href="mailto:hello@stratascreen.ca">hello@stratascreen.ca</a>
+      <a href="contact.html">Contact form →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">Strata<span>Screen</span></a>
+      <div class="footer-tagline-small">Hyper-local digital advertising</div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 StrataScreen Digital Inc. All rights reserved. · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></div>
+</footer>
+
+<script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+</script>
+</body>
+</html>
